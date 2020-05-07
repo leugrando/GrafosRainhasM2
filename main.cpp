@@ -5,6 +5,20 @@ using namespace std;
 
 int main()
 {
+    /* posição escolhida pra rainha 1 */
+    int x = 0;
+    int y = 0;
+
+    int rainhas[TAM];
+
+    /* limpa vetor */
+    for(int i = 0; i < TAM; i++)
+        rainhas[i] = 0;
+
+    /* posição primeira rainha */
+    rainhas[x] = y;
+
+
     /* matriz sem conflito */
     int board_s[TAM][TAM] =
     { 0, 0, 0, 0, 0, 4, 0, 0,
