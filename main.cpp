@@ -1,10 +1,11 @@
 /*
+
     George de Borba Nardes, Diogo Marchi e Leonardo Grando	21/03/2020
 
     Implementacao de busca em largura e em profundidade para a disciplina de grafos
     Professor: Rudimar L. S. Dazzi
-*/
 
+*/
 #include <iostream>
 #include <stdlib.h>
 #include <stack>
@@ -52,7 +53,7 @@ void menu(){
         cout << "1 - Informar Matriz \n";
         cout << "2 - Informar posicao das rainhas \n";  // TODO
         cout << "3 - Ver rainhas posicionadas \n";      // TODO
-        cout << "4 - Ver rainhas posicionadas \n";      // TODO
+        //cout << "4 - Ver rainhas posicionadas \n";      // TODO
         cout << "0 - Finalizar o programa \n\n";
         cout << "Informe a opcao desejada: ";
 
@@ -86,6 +87,34 @@ void menu(){
 				break;
 
 			case 2:
+			    int cLinha, cColuna, tamAux;
+			    tamAux = tam;
+			    for(int i=0 ; i=tamAux; i++){
+
+                    cout <<"Digite a linha da matriz que deseja preencher" <<endl;
+                    cin  >> cLinha;
+                    cout <<"Digite a coluna da matriz que deseja preencher" <<endl;
+                    cin  >> cColuna;
+                    if(mat[cLinha-1][cColuna-1] == 1){
+                        do{
+                            system("CLS");
+                            printMatriz(mat,tam);
+                            cout << "Esta posição ja esta preenchida, digite outra:" << endl;
+                            cout <<"Digite a linha da matriz que deseja preencher" <<endl;
+                            cin  >> cLinha;
+                            cout <<"Digite a coluna da matriz que deseja preencher" <<endl;
+                            cin  >> cColuna;
+                        }while(mat[cLinha-1][cColuna-1] == 1);
+                    }
+
+                    mat[cLinha-1][cColuna-1] = 1;
+
+                    system("CLS");
+                    printMatriz(mat, tam);
+                    cout <<endl<<endl;
+
+                    }
+
 			    break;
 
 			case 3:
