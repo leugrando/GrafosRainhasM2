@@ -1,10 +1,23 @@
 #include <iostream>
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
 #include "util.h"
 
 using namespace std;
 
 int main()
 {
+    // matriz teste zerada
+    int matriz[TAM][TAM] =
+    { 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0};
     /* matriz sem conflito */
     int board_s[TAM][TAM] =
     { 0, 0, 0, 0, 0, 4, 0, 0,
@@ -27,8 +40,11 @@ int main()
       0, 0, 0, 0, 4, 0, 0, 0,
       0, 0, 4, 0, 0, 0, 0, 0};
 
+        preenche(matriz);
 
-    std::cout << "\n\nA SOLUCAO POSSUI "<< conflito(board_c) <<" CONFLITO(s) \n\n";
+
+
+   // std::cout << "\n\nA SOLUCAO POSSUI "<< conflito(board_c) <<" CONFLITO(s) \n\n";
 
 
     return 0;

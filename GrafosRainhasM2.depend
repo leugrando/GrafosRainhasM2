@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1588880480 source:c:\users\leo\desktop\eng comp\7º semestre\grafos\grafosm2rainhas\main.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	"util.h"
+
+1588880616 c:\users\leo\desktop\eng comp\7º semestre\grafos\grafosm2rainhas\util.h
+
+1588880828 source:c:\users\leo\desktop\eng comp\7º semestre\grafos\grafosm2rainhas\util.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	<math.h>
+	"util.h"
+
