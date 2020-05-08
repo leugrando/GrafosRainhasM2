@@ -9,15 +9,27 @@ using namespace std;
 
 void printMatriz(int matriz[][TAM]){
     for(int i = 0; i < TAM; i++){
-        cout << "\n \n";
+        cout << "\n";
         for(int j = 0; j < TAM; j++)
-            cout << "\t" << matriz[i][j];
+            cout << " " << matriz[i][j];
     }
+    cout << "\n-------------------\n\n";
 }
 
 int preenche(int matriz[][TAM], int linha, int coluna)
 {
-    int vet[8] = {-1,-1,-1,-1,-1,-1,-1,-1};
+    /** vetor de representação de posições
+    *   i      = linha
+    *   vet[i] = coluna
+    *   posição da rainha(i, vet[i])
+    */
+    int vet[TAM];
+
+    // limpa vetor
+    for(int i = 0; i < TAM; i++)
+        vet[i] = -1;
+
+    // posicao inicial
     vet[linha] = coluna;
 
     int varRand = -1;
@@ -30,15 +42,15 @@ int preenche(int matriz[][TAM], int linha, int coluna)
     {
         // linha
         do{
-            i = rand()%8;
+            i = rand()%TAM;
         }while(vet[i] != -1);
 
         // coluna
         do{
-            varRand = rand()%8;
+            varRand = rand()%TAM;
 
             // verifica se o valor ja existe no vetor
-            for (int j = 0 ; j < 8; j++)
+            for (int j = 0 ; j < TAM; j++)
             {
                 if(vet[j] == varRand)
                 {
@@ -51,7 +63,7 @@ int preenche(int matriz[][TAM], int linha, int coluna)
 
         // verifica se todas as linhas foram visitadas
         next = false;
-        for (int j = 0 ; j < 8; j++)
+        for (int j = 0 ; j < TAM; j++)
             if(vet[j] == -1)
             {
                 next = true;
@@ -60,21 +72,9 @@ int preenche(int matriz[][TAM], int linha, int coluna)
 
     }
 
-    /*for (int i=0; i<8; i++)
-        cout << "pos " << i << ":" <<vet[i] << endl;*/
-
-
     // vetor pra matriz
-    for (int i = 0; i < 8; i++)
-    {
-        colunaAux = vet[i];
-        matriz[i][colunaAux] = 4;
-    }
-
-    //for(int i = 0; i < TAM; i++){
-    //    cout << "\n \n";
-    //    for(int j = 0; j < TAM; j++)
-    //        cout << "\t" << matriz[i][j];
+    for (int i = 0; i < TAM; i++)
+        matriz[i][vet[i]] = 4;
 }
 
 

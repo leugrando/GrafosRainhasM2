@@ -22,12 +22,13 @@ int main()
     int linha = 0;
     int coluna = 0;
 
+    // realiza prenchimento para todas as posições
     do {
-        if(linha > 7){
+        if(linha > TAM-1){
             linha = 0;
             coluna++;
         }
-        if(coluna > 7)
+        if(coluna > TAM-1)
             break;
 
 
@@ -42,24 +43,17 @@ int main()
 
             preenche(matriz, linha, coluna);
             laco++;
+
         }while(conflito(matriz) == 1);
 
         // print solucao
-        for(int i = 0; i < TAM; i++){
-            std::cout << "\n";
-            for(int j = 0; j < TAM; j++)
-                std::cout << matriz[i][j] << " ";
-        }
+        printMatriz(matriz);
+
         std::cout << "Quantidade total de tentativas: " << laco << endl;
         std::cout << "\n---------------------\n";
 
         linha++;
     }while(1);
-
-
-
-
-   // std::cout << "\n\nA SOLUCAO POSSUI "<< conflito(board_c) <<" CONFLITO(s) \n\n";
 
 
     return 0;
