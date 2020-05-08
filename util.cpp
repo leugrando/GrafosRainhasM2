@@ -8,11 +8,11 @@
 using namespace std;
 
 void printMatriz(int matriz[][TAM]){
-        for(int i = 0; i < TAM; i++){
-            cout << "\n \n";
-            for(int j = 0; j < TAM; j++)
-                cout << "\t" << matriz[i][j];
-        }
+    for(int i = 0; i < TAM; i++){
+        cout << "\n \n";
+        for(int j = 0; j < TAM; j++)
+            cout << "\t" << matriz[i][j];
+    }
 }
 
 int preenche(int matriz[][TAM], int linha, int coluna)
@@ -101,22 +101,13 @@ int verifica_diagonais(int board[][TAM], int x_i, int y_i)
 /** Retorna a quantidade de conflito nas diagonais */
 int conflito(int board[][TAM])
 {
-    int qtd_conflito = 0;
-
     for(int i = 0; i < TAM; i++)
         for(int j = 0; j < TAM; j++)
-        {
             if(board[i][j] == 4)
-            {
-                //std::cout << "\n\nrainha pos " << i <<":" <<j;
-                qtd_conflito += verifica_diagonais(board, i, j);
                 if(verifica_diagonais(board, i, j)==1)
                     return 1;
 
-            }
-        }
     return 0;
-    //return qtd_conflito;
 }
 
 

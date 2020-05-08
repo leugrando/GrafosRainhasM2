@@ -24,6 +24,7 @@ int main()
 
     int laco = 0;
     do{
+        // zera a matriz para nova tentativa
         for(int i = 0; i < TAM; i++)
         for(int j = 0; j < TAM; j++)
             matriz[i][j] = 0;
