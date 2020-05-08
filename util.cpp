@@ -17,31 +17,50 @@ void printMatriz(int matriz[][TAM]){
 
 int preenche(int matriz[][TAM], int linha, int coluna)
 {
-    int vet[8] = {0,0,0,0,0,0,0,0};
+    int vet[8] = {-1,-1,-1,-1,-1,-1,-1,-1};
     vet[linha] = coluna;
 
     int varRand = -1;
     int colunaAux = 0;
+    int i = 0;
 
-    for(int i = 0; i < 8; i++)
+    bool next = true;
+
+    while(next)
     {
-        // so passa se nao estiver na posição indicada pelo usuario
-        if(i != linha)
-        {
-            // do faz as verificações, fica nele ate estar certo
-            do{
-                varRand = rand()%8;
-                // verifica se o valor ja existe no vetor
-                for (int j = 0 ; j < 8; j++)
+        // linha
+        do{
+            i = rand()%8;
+        }while(vet[i] != -1);
+
+        // coluna
+        do{
+            varRand = rand()%8;
+
+            // verifica se o valor ja existe no vetor
+            for (int j = 0 ; j < 8; j++)
+            {
+                if(vet[j] == varRand)
                 {
-                    if(varRand==vet[j]) varRand = -1; continue;
+                    varRand = -1;
+                    break;
                 }
-                vet[i] = varRand;
-            }while(varRand == -1);
-        }
+            }
+            vet[i] = varRand;
+        }while(varRand == -1);
+
+        // verifica se todas as linhas foram visitadas
+        next = false;
+        for (int j = 0 ; j < 8; j++)
+            if(vet[j] == -1)
+            {
+                next = true;
+                break;
+            }
+
     }
 
-   /* for (int i=0; i<8; i++)
+    /*for (int i=0; i<8; i++)
         cout << "pos " << i << ":" <<vet[i] << endl;*/
 
 
