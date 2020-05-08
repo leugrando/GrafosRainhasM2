@@ -19,11 +19,8 @@ int main()
         for(int j = 0; j < TAM; j++)
             matriz[i][j] = 0;
 
-    int linha, coluna;
-    cout << "Digite a linha inicial " << endl;
-    cin >> linha;
-    cout << "\nDigite a coluna inicial " << endl;
-    cin >> coluna;
+    int linha = 0;
+    int coluna = 0;
 
     do {
         if(linha > 7){
