@@ -16,3 +16,20 @@
 	<math.h>
 	"util.h"
 
+1588903282 source:c:\users\george\desktop\george\grafos\grafosrainhasm2\util.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	<math.h>
+	"util.h"
+
+1588897869 c:\users\george\desktop\george\grafos\grafosrainhasm2\util.h
+
+1588900816 source:c:\users\george\desktop\george\grafos\grafosrainhasm2\main.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	<stdlib.h>
+	"util.h"
+

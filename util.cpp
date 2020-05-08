@@ -15,131 +15,87 @@ void printMatriz(int matriz[][TAM]){
         }
 }
 
-int preenche(int matriz[][TAM])
+int preenche(int matriz[][TAM], int linha, int coluna)
 {
-    int linha, coluna;
-     cout << "Digite a linha inicial " << endl;
-     cin >> linha;
-     cout << "\nDigite a coluna inicial " << endl;
-     cin >> coluna;
+    int vet[8] = {0,0,0,0,0,0,0,0};
+    vet[linha] = coluna;
 
+    int varRand = -1;
+    int colunaAux = 0;
 
-     int vet[8] = {0,0,0,0,0,0,0,0};
-     vet[linha] = coluna;
-     int varRand;
-     int colunaAux;
-     for(int i = 0; i<8; i++)
-     {
-        if(i != linha){        // so passa se nao estiver na posição indicada pelo usuario
-
-            do{                 // do faz as verificações, fica nele ate estar certo
+    for(int i = 0; i < 8; i++)
+    {
+        // so passa se nao estiver na posição indicada pelo usuario
+        if(i != linha)
+        {
+            // do faz as verificações, fica nele ate estar certo
+            do{
                 varRand = rand()%8;
-                for (int j=0 ; j< 8; j++) // para nao ter repetiçao no vetor
+                // verifica se o valor ja existe no vetor
+                for (int j = 0 ; j < 8; j++)
                 {
-                   if(varRand==vet[j])
-                        varRand = coluna;       // forçar while a fazer de novo kkkk
+                    if(varRand==vet[j]) varRand = -1; continue;
                 }
-                if(i!=0){
-                    if((abs(vet[i-1] - varRand)<=1)||(abs(vet[i+1] - varRand)<=1))
-                            // para diferença entre 1 e o anterior ser maior q 1
-                        varRand = coluna;               // força o while pra fazer de novo
-                    }
-
-
                 vet[i] = varRand;
-            }while(varRand == coluna); // faz de novo ate a diferença das linhas serem maiores q 1 coluna
-                                                                    // e a coluna n for igual a inicial
+            }while(varRand == -1);
         }
-     }
-    for (int i=0; i<8; i++)
-    {
-      cout << "pos " << i << " " <<vet[i] <<endl;
     }
-    for (int i = 0; i<8; i++)       // for para colocar as rainhas nos locais
+
+   /* for (int i=0; i<8; i++)
+        cout << "pos " << i << ":" <<vet[i] << endl;*/
+
+
+    // vetor pra matriz
+    for (int i = 0; i < 8; i++)
     {
-        colunaAux=vet[i];
+        colunaAux = vet[i];
         matriz[i][colunaAux] = 4;
     }
 
-    for(int i = 0; i < TAM; i++){
-            cout << "\n \n";
-            for(int j = 0; j < TAM; j++)
-                cout << "\t" << matriz[i][j];
-        }
-
+    //for(int i = 0; i < TAM; i++){
+    //    cout << "\n \n";
+    //    for(int j = 0; j < TAM; j++)
+    //        cout << "\t" << matriz[i][j];
 }
+
+
+
 /** verifica diagonais do ponto x_i, y_i */
 int verifica_diagonais(int board[][TAM], int x_i, int y_i)
 {
-    int qtd_conflito = 0;
-
-    std::cout << "\n\tVerificando diagonais\n";
     int i = x_i;
     int j = y_i;
 
     /* diagonal superior esquerda */
     while(--i >= 0 && --j >= 0)
-    {
-        std::cout << i <<":"<< j ;
         if(board[i][j] != 0)
-        {
-            std::cout << "\tCONFLITO!";
-            //return 1;
-            qtd_conflito++;
-        }
-        std::cout << endl;
-    }
+            return 1;
 
     i = x_i;
     j = y_i;
 
     /* diagonal superior direita */
     while(--i >= 0 && ++j < TAM)
-    {
-        std::cout << i <<":"<< j ;
         if(board[i][j] != 0)
-        {
-            std::cout << "\tCONFLITO!";
-            //return 1;
-            qtd_conflito++;
-        }
-        std::cout << endl;
-    }
-
+            return 1;
 
     i = x_i;
     j = y_i;
 
     /* diagonal inferior direita */
     while(++i < TAM && ++j < TAM)
-    {
-        std::cout << i <<":"<< j ;
         if(board[i][j] != 0)
-        {
-            std::cout << "\tCONFLITO!";
-            //return 1;
-            qtd_conflito++;
-        }
-        std::cout << endl;
-    }
+            return 1;
 
     i = x_i;
     j = y_i;
 
     /* diagonal inferior esquerda */
     while(++i < TAM && --j >= 0)
-    {
-        std::cout << i <<":"<< j ;
         if(board[i][j] != 0)
-        {
-            std::cout << "\tCONFLITO!";
-            //return 1;
-            qtd_conflito++;
-        }
-        std::cout << endl;
-    }
+            return 1;
 
-    return qtd_conflito;
+    return 0;
 }
 
 /** Retorna a quantidade de conflito nas diagonais */
@@ -152,13 +108,15 @@ int conflito(int board[][TAM])
         {
             if(board[i][j] == 4)
             {
-                std::cout << "\n\nrainha pos " << i <<":" <<j;
+                //std::cout << "\n\nrainha pos " << i <<":" <<j;
                 qtd_conflito += verifica_diagonais(board, i, j);
-                std::cout << "---------\n";
+                if(verifica_diagonais(board, i, j)==1)
+                    return 1;
+
             }
         }
-
-    return qtd_conflito;
+    return 0;
+    //return qtd_conflito;
 }
 
 

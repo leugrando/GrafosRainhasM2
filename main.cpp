@@ -8,57 +8,39 @@ using namespace std;
 
 int main()
 {
-<<<<<<< HEAD
+
     // matriz teste zerada
-    int matriz[TAM][TAM] =
-    { 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0};
-=======
-    /* posição escolhida pra rainha 1 */
-    int x = 0;
-    int y = 0;
+    int matriz[TAM][TAM];
 
-    int rainhas[TAM];
-
-    /* limpa vetor */
     for(int i = 0; i < TAM; i++)
-        rainhas[i] = 0;
+        for(int j = 0; j < TAM; j++)
+            matriz[i][j] = 0;
 
-    /* posição primeira rainha */
-    rainhas[x] = y;
+    int linha, coluna;
+    cout << "Digite a linha inicial " << endl;
+    cin >> linha;
+    cout << "\nDigite a coluna inicial " << endl;
+    cin >> coluna;
 
+    int laco = 0;
+    do{
+        for(int i = 0; i < TAM; i++)
+        for(int j = 0; j < TAM; j++)
+            matriz[i][j] = 0;
 
->>>>>>> 930f6f4ae315e9cf105842c6bb2afb2c0d2a131e
-    /* matriz sem conflito */
-    int board_s[TAM][TAM] =
-    { 0, 0, 0, 0, 0, 4, 0, 0,
-      0, 0, 0, 4, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 4, 0,
-      4, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 4,
-      0, 4, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 4, 0, 0, 0,
-      0, 0, 4, 0, 0, 0, 0, 0};
+        preenche(matriz, linha, coluna);
 
-    /* matriz com conflito */
-    int board_c[TAM][TAM] =
-    { 0, 0, 0, 0, 0, 4, 0, 0,
-      0, 0, 0, 4, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 4, 0,
-      0, 4, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 4,
-      4, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 4, 0, 0, 0,
-      0, 0, 4, 0, 0, 0, 0, 0};
+        for(int i = 0; i < TAM; i++){
+            std::cout << "\n";
+            for(int j = 0; j < TAM; j++)
+                std::cout << matriz[i][j] << " ";
+        }
+        std::cout << "\n---------------------\n";
 
-        preenche(matriz);
+        laco++;
+    }while(conflito(matriz) == 1);
 
+    std::cout << "Quantidade total de tentativas: " << laco << endl;
 
 
    // std::cout << "\n\nA SOLUCAO POSSUI "<< conflito(board_c) <<" CONFLITO(s) \n\n";
