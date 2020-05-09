@@ -16,7 +16,7 @@ void printMatriz(int matriz[][TAM]){
     cout << "\n-------------------\n\n";
 }
 
-int preenche(int matriz[][TAM], int linha, int coluna)
+void preenche(int matriz[][TAM], int linha, int coluna)
 {
     /** vetor de representação de posições
     *   i      = linha
@@ -25,15 +25,18 @@ int preenche(int matriz[][TAM], int linha, int coluna)
     */
     int vet[TAM];
 
-    // limpa vetor
+    int seq[TAM];
+    int num_seq = 1;
+
+    // limpa vetores
     for(int i = 0; i < TAM; i++)
-        vet[i] = -1;
+        seq[i] = vet[i] = -1;
 
     // posicao inicial
     vet[linha] = coluna;
+    seq[linha] = 1;
 
     int varRand = -1;
-    int colunaAux = 0;
     int i = 0;
 
     bool next = true;
@@ -44,6 +47,9 @@ int preenche(int matriz[][TAM], int linha, int coluna)
         do{
             i = rand()%TAM;
         }while(vet[i] != -1);
+
+        num_seq++;
+        seq[i] = num_seq;
 
         // coluna
         do{
@@ -72,9 +78,11 @@ int preenche(int matriz[][TAM], int linha, int coluna)
 
     }
 
+
     // vetor pra matriz
     for (int i = 0; i < TAM; i++)
-        matriz[i][vet[i]] = 4;
+        matriz[i][vet[i]] = seq[i];
+
 }
 
 
@@ -122,11 +130,51 @@ int conflito(int board[][TAM])
 {
     for(int i = 0; i < TAM; i++)
         for(int j = 0; j < TAM; j++)
-            if(board[i][j] == 4)
+            if(board[i][j] != 0)
                 if(verifica_diagonais(board, i, j)==1)
                     return 1;
 
     return 0;
+}
+
+void soluciona_todas(int matriz[][TAM])
+{
+    /* posição inicial */
+    int linha = 0;
+    int coluna = 0;
+
+    // realiza prenchimento para todas as posições
+    do {
+        if(linha > TAM-1){
+            linha = 0;
+            coluna++;
+        }
+        if(coluna > TAM-1)
+            break;
+
+
+        std::cout << "Posicao inicial " << linha << ":" << coluna << "\n";
+
+        int laco = 0;
+        do{
+            // zera a matriz para nova tentativa
+            for(int i = 0; i < TAM; i++)
+            for(int j = 0; j < TAM; j++)
+                matriz[i][j] = 0;
+
+            preenche(matriz, linha, coluna);
+            laco++;
+
+        }while(conflito(matriz) == 1);
+
+        // print solucao
+        printMatriz(matriz);
+
+        std::cout << "Quantidade total de tentativas: " << laco << endl;
+        std::cout << "\n---------------------\n";
+
+        linha++;
+    }while(1);
 }
 
 
