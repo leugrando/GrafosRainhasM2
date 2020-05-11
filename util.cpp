@@ -193,22 +193,25 @@ void soluciona_um(int matriz[][TAM])
     system("CLS");
      std::cout << "Posicao inicial " << linha << ":" << coluna << "\n";
 
-        do{
-            // zera a matriz para nova tentativa
-            for(int i = 0; i < TAM; i++)
-            for(int j = 0; j < TAM; j++)
-                matriz[i][j] = 0;
+    do{
+        // zera a matriz para nova tentativa
+        for(int i = 0; i < TAM; i++)
+        for(int j = 0; j < TAM; j++)
+            matriz[i][j] = 0;
 
-            preenche(matriz, linha, coluna);
-            laco++;
+        preenche(matriz, linha, coluna);
+        laco++;
 
-        }while(conflito(matriz) == 1);
+    }while(conflito(matriz) == 1);
 
-        // print solucao
-        printMatriz(matriz);
+    // print solucao
+    printMatriz(matriz);
 
-        std::cout << "Quantidade total de tentativas: " << laco << endl;
-        std::cout << "\n---------------------\n";}
+    std::cout << "Quantidade total de tentativas: " << laco << endl;
+    std::cout << "\n---------------------\n";
+}
+
+
 void menu(){
     int op;
     do{
@@ -233,46 +236,38 @@ void menu(){
 				break;
 			}
 			case 1:{
+                srand(time(NULL));
 
-    srand(time(NULL));
-<<<<<<< HEAD
-=======
+                int linha, coluna;
 
-    int linha, coluna;
-    // matriz teste zerada
-    int matriz[TAM][TAM];
+                // matriz teste zerada
+                int matriz[TAM][TAM];
 
-    for(int i = 0; i < TAM; i++)
-        for(int j = 0; j < TAM; j++)
-            matriz[i][j] = 0;
+                for(int i = 0; i < TAM; i++)
+                for(int j = 0; j < TAM; j++)
+                    matriz[i][j] = 0;
 
+                soluciona_um(matriz);
 
-
-    soluciona_um(matriz);
-    >>>>>>> 186c39b15574d52f252bb64a574568fe5f3fa970
-=======
-
-    pausa();
+                pausa();
 				break;
 			}
 			case 2:{
-<<<<<<< HEAD
-=======
 
-    srand(time(NULL));
+                srand(time(NULL));
 
-    // matriz teste zerada
-    int matriz[TAM][TAM];
+                // matriz teste zerada
+                int matriz[TAM][TAM];
 
-    for(int i = 0; i < TAM; i++)
-        for(int j = 0; j < TAM; j++)
-            matriz[i][j] = 0;
+                for(int i = 0; i < TAM; i++)
+                for(int j = 0; j < TAM; j++)
+                    matriz[i][j] = 0;
 
-    soluciona_todas(matriz);
->>>>>>> 186c39b15574d52f252bb64a574568fe5f3fa970
-    pausa();
+                soluciona_todas(matriz);
+
+                pausa();
 			    break;
-		}
+            }
 			case 3:
 			    cout << "-------Desenvolvedores------\n" <<endl;
 			    cout << "Diogo Marchi" << endl;
@@ -281,7 +276,7 @@ void menu(){
 			    pausa();
                 break;
 
-        default: {
+            default: {
 
 			}
         }
