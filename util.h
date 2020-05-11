@@ -9,9 +9,12 @@ int conflito(int board[][TAM]);
 void preenche(int matriz[][TAM], int linha, int coluna);
 void printMatriz(int matriz[][TAM]);
 void soluciona_todas(int matriz[][TAM]);
+<<<<<<< HEAD
 void soluciona_um(int matriz[][TAM]);
 void menu();
 void pausa();
+=======
+>>>>>>> 186c39b15574d52f252bb64a574568fe5f3fa970
 
 
 

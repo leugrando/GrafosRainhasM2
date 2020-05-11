@@ -170,6 +170,7 @@ void soluciona_todas(int matriz[][TAM])
 
             preenche(matriz, linha, coluna);
             laco++;
+<<<<<<< HEAD
 
         }while(conflito(matriz) == 1);
 
@@ -179,6 +180,17 @@ void soluciona_todas(int matriz[][TAM])
         std::cout << "Quantidade total de tentativas: " << laco << endl;
         std::cout << "\n---------------------\n";
 
+=======
+
+        }while(conflito(matriz) == 1);
+
+        // print solucao
+        printMatriz(matriz);
+
+        std::cout << "Quantidade total de tentativas: " << laco << endl;
+        std::cout << "\n---------------------\n";
+
+>>>>>>> 186c39b15574d52f252bb64a574568fe5f3fa970
         linha++;
     }while(1);
 }
